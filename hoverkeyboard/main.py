@@ -104,25 +104,26 @@ def redraw_canvas(event):
     points = simple_staggered_grid()
     points[::2] = [x * width for x in points[::2]]
     points[1::2] = [x * height for x in points[1::2]]
+    keys = list( "1234567890abcdefghijklmnopqrstuvwxyz)!@#$%^&*([{}]")
 
     for point in range(0, len(points),2):
         # print(points[point], points[point+1])
         canvas.create_circle(points[point], points[point+1], 10, fill=colors[current_color])
 
-    Point = namedtuple('Point', 'x y')
     tuple_points = np.array([[x,y] for x,y in zip(points[::2], points[1::2])])
     tessellation_results = Voronoi(tuple_points)
     point_regions = tessellation_results.point_region
     regions = tessellation_results.regions
     vertices = tessellation_results.vertices
     
-    for index,region in enumerate((regions)):
+    for index,region_index in enumerate((point_regions)):
+        region = regions[region_index]
         if -1 in region or len(region) == 0:
             # Skip infinite regions
             continue
         polygon_points = np.array([vertices[i] for i in region])
         polygon_points = polygon_points.flatten().tolist()
-        PolygonButton(canvas,polygon_points,[points[index], points[index+1]])
+        PolygonButton(canvas,polygon_points,[points[index*2], points[index*2+1]])
         # canvas.create_polygon(polygon_points, outline='black', fill='', width=1)
 
     
