@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "hoverkeyboard"
+version = "0.1.0"
+description = ""
+authors = ["knork <knork@m1234.de>"]
+
+[tool.poetry.dependencies]
+python = "^3.8,<3.12"    
+tk = "^0.1.0"
+scipy = "1.10.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
