@@ -1,3 +1,6 @@
+import os
+
+
 class Action:
     """docstring for Action."""
     def __init__(self, text):
@@ -8,5 +11,6 @@ class Action:
 
     def perform_action(self):
         print("Performing action: " + self.text)
+        os.system("xdotool key "+ self.text)
 
     

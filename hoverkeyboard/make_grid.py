@@ -1,20 +1,26 @@
 
+import numpy as np
+
 def simple_staggered_grid():
     points = []
-    index_one = 0.1
-    index_two = 0.1
+    x_space = np.linspace(0.05,0.95, 12)
+    x_space = [x+0.3*x*x*x for x in x_space ]
+
+    y_space = np.linspace(0.05,0.95, 6) 
+    # points = points.tolist()
     offset = False
-    while index_one < 0.95:
-        while index_two < 0.85:
-            offset = not offset
+    for y in y_space:
+        offset = not offset
+        for x in x_space:
             if offset:
-                points.append(index_one + 0.05)
+                points.append(x + 0.05)
             else:
-                points.append(index_one)
-            points.append(index_two)
-            index_two += 0.1
-        index_one += 0.1
-        index_two = 0.1
+                points.append(x)
+            points.append(y)
+
+
+
+
 
     # Include Points outside of the boundary box
     points.extend([-5,-5, 5,-5, 5,5, -5,5])
