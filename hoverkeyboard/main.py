@@ -1,4 +1,5 @@
 from collections import namedtuple
+import logging
 import tkinter
 import numpy as np
 from scipy.spatial import Delaunay, Voronoi, voronoi_plot_2d
@@ -11,12 +12,15 @@ from hoverkeyboard.make_grid import simple_staggered_grid
 
 # 
 
-
+logging.basicConfig(level=logging.DEBUG)
 root = tkinter.Tk()
 root.config(cursor="none")
 root.attributes("-topmost", True)
+#root.attributes("-type", "splash")
+#root.overrideredirect(True)
+
 root.bind("<Control-s>", lambda event: save_to_file(buttons))
-canvas = tkinter.Canvas(root)
+canvas = tkinter.Canvas(root,takefocus=0)
 canvas.pack(fill=tkinter.BOTH, expand=True)
 
 # canvas.pack()

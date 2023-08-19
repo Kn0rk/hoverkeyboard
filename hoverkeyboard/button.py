@@ -1,4 +1,5 @@
 import json
+import logging
 from typing import List
 
 import numpy as np
@@ -24,7 +25,7 @@ class PolygonButton:
         # self._create_circle(self.center[0],self.center[1],5,fill="red")
 
 
-        self.action = action
+        self.action: Action = action
         self.hover_start = None
 
 
@@ -59,7 +60,23 @@ class PolygonButton:
     def on_click(self, event):
         #pop up text box
         input_text = input("Enter text for button: ")
-        self.action = Action(input_text)
+
+        action = None
+        # if input is a single word, assume it is a key
+        if len(input_text.split(" ")) == 1:
+            command = "actions.key('" + input_text + "')"
+            action = Action(input_text,command)
+            logging.info("Created key command: " + command)
+        else:
+            # find first comma and split on that
+            comma_index = input_text[1:].find(",")
+            if comma_index == -1:
+                raise ValueError("No comma found in input text")
+            action = Action(input_text[:comma_index],input_text[comma_index+1:])
+            logging.info("Created command: " + input_text[:comma_index] + " with comand: " + input_text[comma_index+1:])
+
+
+        self.action = action
         self.hover_start = None
         self.draw()
 
@@ -110,31 +127,61 @@ def recalculate_polygon(root, buttons: List[PolygonButton]):
         polyButton.polygon_points = polygon_points
         polyButton.transformed_center = [polyButton.center[0]*width,polyButton.center[1]*height]
 
-def save_to_file(buttons: List[PolygonButton]):
+def save_to_file(buttons: List[PolygonButton],file_name: str="custom_grid.json"):
     output = [
         {
             "center": button.center,
-            "action": button.action.text
+            "label": button.action.get_action_name(),
+            "command": button.action.get_comand_name()
         }
         for button in buttons
     ]
     json_output = json.dumps(output,indent=4)
-    with open("button_data.json","w") as f:
+    with open(file_name,"w") as f:
         f.write(json_output)
-    print("Saved to file")
+    print("Saved to file "+file_name)
 
-def load_from_file(root,canvas):
+def load_from_file(root,canvas,file_name: str="custom_grid.json"):
 
-    with open("button_data.json","r") as f:
+    with open(file_name,"r") as f:
         data = json.load(f)
 
+    # check if file includes surrounding points
+    count_surrounding_points=0
+    for button_data in data:
+        if button_data["center"][0]+button_data["center"][1]>3:
+            count_surrounding_points+=1
     
+    if count_surrounding_points==0:
+        # add surrounding points
+        data.extend([{
+            "center": [-5,-5],
+            "label": None
+        },
+        {
+            "center": [-5,5],
+            "label": None
+        },
+        {
+            "center": [5,-5],
+            "label": None
+        },
+        {
+            "center": [5,5],
+            "label": None
+        }])
+    
+
+
     buttons = []
     for button_data in data:
+        action=Action(button_data["label"])
+        if "command" in button_data:
+            action=Action(button_data["label"],button_data["command"])
         buttons.append(PolygonButton(canvas,[],
                       [button_data["center"][0],
                           button_data["center"][1]]                       
-                       ,Action(button_data["action"])))
+                       ,action=action))
     recalculate_polygon(root,buttons)
     print("Loaded from file")
     return buttons

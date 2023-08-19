@@ -1,0 +1,634 @@
+[
+    {
+        "center": [
+            0.050000000000000044,
+            0.15
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.18999999999999995,
+            0.15
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.28,
+            0.15
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.33999999999999997,
+            0.15
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.4,
+            0.15
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.44999999999999996,
+            0.15
+        ],
+        "label": "b",
+        "command": "actions.key('b')"
+    },
+    {
+        "center": [
+            0.5,
+            0.15
+        ],
+        "label": "up",
+        "command": "actions.key('up')"
+    },
+    {
+        "center": [
+            0.55,
+            0.15
+        ],
+        "label": "r",
+        "command": "actions.key('r')"
+    },
+    {
+        "center": [
+            0.6,
+            0.15
+        ],
+        "label": ";",
+        "command": "actions.key(';')"
+    },
+    {
+        "center": [
+            0.66,
+            0.15
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.72,
+            0.15
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.81,
+            0.15
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.95,
+            0.15
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.12,
+            0.3
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.235,
+            0.3
+        ],
+        "label": "home",
+        "command": "actions.key('home')"
+    },
+    {
+        "center": [
+            0.31,
+            0.3
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.37,
+            0.3
+        ],
+        "label": "p",
+        "command": "actions.key('p')"
+    },
+    {
+        "center": [
+            0.425,
+            0.3
+        ],
+        "label": "n",
+        "command": "actions.key('n')"
+    },
+    {
+        "center": [
+            0.475,
+            0.3
+        ],
+        "label": "e",
+        "command": "actions.key('e')"
+    },
+    {
+        "center": [
+            0.525,
+            0.3
+        ],
+        "label": "h",
+        "command": "actions.key('h')"
+    },
+    {
+        "center": [
+            0.575,
+            0.3
+        ],
+        "label": "o",
+        "command": "actions.key('o')"
+    },
+    {
+        "center": [
+            0.63,
+            0.3
+        ],
+        "label": "f",
+        "command": "actions.key('f')"
+    },
+    {
+        "center": [
+            0.69,
+            0.3
+        ],
+        "label": "g",
+        "command": "actions.key('g')"
+    },
+    {
+        "center": [
+            0.765,
+            0.3
+        ],
+        "label": "end",
+        "command": "actions.key('end')"
+    },
+    {
+        "center": [
+            0.88,
+            0.3
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.050000000000000044,
+            0.45
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.18999999999999995,
+            0.45
+        ],
+        "label": "left",
+        "command": "actions.key('left')"
+    },
+    {
+        "center": [
+            0.28,
+            0.45
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.33999999999999997,
+            0.45
+        ],
+        "label": ",",
+        "command": "actions.key(',')"
+    },
+    {
+        "center": [
+            0.4,
+            0.45
+        ],
+        "label": ".",
+        "command": "actions.key('.')"
+    },
+    {
+        "center": [
+            0.44999999999999996,
+            0.45
+        ],
+        "label": "tab",
+        "command": "actions.key('tab')"
+    },
+    {
+        "center": [
+            0.5,
+            0.45
+        ],
+        "label": "enter",
+        "command": "actions.key('enter')"
+    },
+    {
+        "center": [
+            0.55,
+            0.45
+        ],
+        "label": "space",
+        "command": "actions.key('space')"
+    },
+    {
+        "center": [
+            0.6,
+            0.45
+        ],
+        "label": "backspace",
+        "command": "actions.key('backspace')"
+    },
+    {
+        "center": [
+            0.66,
+            0.45
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.72,
+            0.45
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.81,
+            0.45
+        ],
+        "label": "right",
+        "command": "actions.key('right')"
+    },
+    {
+        "center": [
+            0.95,
+            0.45
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.12,
+            0.6
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.235,
+            0.6
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.31,
+            0.6
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.37,
+            0.6
+        ],
+        "label": "y",
+        "command": "actions.key('y')"
+    },
+    {
+        "center": [
+            0.425,
+            0.6
+        ],
+        "label": "s",
+        "command": "actions.key('s')"
+    },
+    {
+        "center": [
+            0.475,
+            0.6
+        ],
+        "label": "u",
+        "command": "actions.key('u')"
+    },
+    {
+        "center": [
+            0.525,
+            0.6
+        ],
+        "label": "t",
+        "command": "actions.key('t')"
+    },
+    {
+        "center": [
+            0.575,
+            0.6
+        ],
+        "label": "a",
+        "command": "actions.key('a')"
+    },
+    {
+        "center": [
+            0.63,
+            0.6
+        ],
+        "label": "c",
+        "command": "actions.key('c')"
+    },
+    {
+        "center": [
+            0.69,
+            0.6
+        ],
+        "label": "l",
+        "command": "actions.key('l')"
+    },
+    {
+        "center": [
+            0.765,
+            0.6
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.88,
+            0.6
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.050000000000000044,
+            0.75
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.18999999999999995,
+            0.75
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.28,
+            0.75
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.33999999999999997,
+            0.75
+        ],
+        "label": "v",
+        "command": "actions.key('v')"
+    },
+    {
+        "center": [
+            0.4,
+            0.75
+        ],
+        "label": "k",
+        "command": "actions.key('k')"
+    },
+    {
+        "center": [
+            0.44999999999999996,
+            0.75
+        ],
+        "label": "i",
+        "command": "actions.key('i')"
+    },
+    {
+        "center": [
+            0.5,
+            0.75
+        ],
+        "label": "down",
+        "command": "actions.key('down')"
+    },
+    {
+        "center": [
+            0.55,
+            0.75
+        ],
+        "label": "d",
+        "command": "actions.key('d')"
+    },
+    {
+        "center": [
+            0.6,
+            0.75
+        ],
+        "label": "j",
+        "command": "actions.key('j')"
+    },
+    {
+        "center": [
+            0.66,
+            0.75
+        ],
+        "label": "q",
+        "command": "actions.key('q')"
+    },
+    {
+        "center": [
+            0.72,
+            0.75
+        ],
+        "label": "r",
+        "command": "actions.key('r')"
+    },
+    {
+        "center": [
+            0.81,
+            0.75
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.95,
+            0.75
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.12,
+            0.9
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.235,
+            0.9
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.31,
+            0.9
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.37,
+            0.9
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.425,
+            0.9
+        ],
+        "label": "z",
+        "command": "actions.key('z')"
+    },
+    {
+        "center": [
+            0.475,
+            0.9
+        ],
+        "label": "w",
+        "command": "actions.key('w')"
+    },
+    {
+        "center": [
+            0.525,
+            0.9
+        ],
+        "label": "m",
+        "command": "actions.key('m')"
+    },
+    {
+        "center": [
+            0.575,
+            0.9
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.63,
+            0.9
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.69,
+            0.9
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.765,
+            0.9
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            0.88,
+            0.9
+        ],
+        "label": "xx",
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            -5,
+            -5
+        ],
+        "label": null,
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            -5,
+            5
+        ],
+        "label": null,
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            5,
+            -5
+        ],
+        "label": null,
+        "command": "print('hoverkeyboard: No comand given')"
+    },
+    {
+        "center": [
+            5,
+            5
+        ],
+        "label": null,
+        "command": "print('hoverkeyboard: No comand given')"
+    }
+]
