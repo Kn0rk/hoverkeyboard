@@ -8,15 +8,15 @@ from subprocess import Popen, PIPE, STDOUT
 
 class Action:
     """docstring for Action."""
-    def __init__(self, text, comand:str=None):
+    def __init__(self, text, talon_command:str=None):
         self.text = text
-        if comand is None:
-            self.comand = r"print('No comand given')"
+        if talon_command is None:
+            self.talon_comand = r"print('No comand given')"
         else:
-            self.comand = comand
+            self.talon_comand = talon_command
 
     def get_comand_name(self):
-        return self.comand
+        return self.talon_comand
 
     def get_action_name(self):
         return self.text
@@ -24,15 +24,15 @@ class Action:
     def perform_action(self):
         key = self.text
         #os.system("xdotool key "+key)
-        com = self.comand.replace("'","\\'")
+        com = self.talon_comand.replace("'","\\'")
 
         p = Popen(['/home/knork/.talon/bin/repl'], stdout=PIPE, stdin=PIPE, stderr=PIPE)
-        stdout_data = p.communicate(input=self.comand.encode())[0]
+        stdout_data = p.communicate(input=self.talon_comand.encode())[0]
     
 
         return
     #suenofgacuskijdqvyphebrhello how are you  s   
-        print("Performing action: " + self.text + " with comand: " + self.comand)
+        print("Performing action: " + self.text + " with comand: " + self.talon_comand)
         folder=tempfile.gettempdir()
         # check if folder exists
         if not os.path.exists(folder+"/hoverkeyboard"):
@@ -49,7 +49,7 @@ class Action:
                 
         # create file.look
         with open(folder+"/hoverkeyboard/"+str(uuid.uuid4()),"w") as f:
-            f.write(self.comand)
+            f.write(self.talon_comand)
 
         os.system("xdotool key F10")
 

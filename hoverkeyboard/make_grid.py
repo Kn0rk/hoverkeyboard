@@ -22,7 +22,7 @@ def simple_staggered_grid():
             points.append(y)
 
 
-    # Include Points outside of the boundary box
+    # Include Points outside of the boundary boxt to make sure the delaunay triangulation works
     points.extend([-5,-5, 5,-5, 5,5, -5,5])
     return points
 

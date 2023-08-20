@@ -72,7 +72,7 @@ class PolygonButton:
             comma_index = input_text[1:].find(",")
             if comma_index == -1:
                 raise ValueError("No comma found in input text")
-            action = Action(input_text[:comma_index],input_text[comma_index+1:])
+            action = Action(input_text[:comma_index+1],input_text[comma_index+2:])
             logging.info("Created command: " + input_text[:comma_index] + " with comand: " + input_text[comma_index+1:])
 
 
@@ -132,7 +132,7 @@ def save_to_file(buttons: List[PolygonButton],file_name: str="custom_grid.json")
         {
             "center": button.center,
             "label": button.action.get_action_name(),
-            "command": button.action.get_comand_name()
+            "talon_command": button.action.get_comand_name()
         }
         for button in buttons
     ]
@@ -176,8 +176,8 @@ def load_from_file(root,canvas,file_name: str="custom_grid.json"):
     buttons = []
     for button_data in data:
         action=Action(button_data["label"])
-        if "command" in button_data:
-            action=Action(button_data["label"],button_data["command"])
+        if "talon_command" in button_data:
+            action=Action(button_data["label"],button_data["talon_command"])
         buttons.append(PolygonButton(canvas,[],
                       [button_data["center"][0],
                           button_data["center"][1]]                       
