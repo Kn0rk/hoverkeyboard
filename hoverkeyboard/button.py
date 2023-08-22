@@ -12,15 +12,16 @@ from scipy.spatial import Delaunay, Voronoi, voronoi_plot_2d
 class PolygonButton:
 
     
-    def __init__(self, canvas, polygon: List[float],center: List[float],action: Action):
-        assert len(polygon) % 2 == 0
+    def __init__(self, canvas,center: List[float],action: Action):
         assert len(center) == 2
+        self.canvas = canvas
+        self.relati
         self.polygon = None
         self.text = None
-        self.canvas = canvas
-        self.polygon_points = polygon
+        self.polygon_points = None
         self.transformed_center=[]
         self.center = center
+        self.laybel = None
 
         # self._create_circle(self.center[0],self.center[1],5,fill="red")
 
@@ -29,7 +30,8 @@ class PolygonButton:
         self.hover_start = None
 
 
-
+    def set_laybel(self,laybel):
+        self.laybel = laybel
 
     def draw(self):
         scaled_points = self.scale_points(1)
@@ -127,7 +129,7 @@ def recalculate_polygon(root, buttons: List[PolygonButton]):
         polyButton.polygon_points = polygon_points
         polyButton.transformed_center = [polyButton.center[0]*width,polyButton.center[1]*height]
 
-def save_to_file(buttons: List[PolygonButton],file_name: str="custom_grid.json"):
+def save_to_file(buttons: List[PolygonButton],file_name: str="custom_grid2.json"):
     output = [
         {
             "center": button.center,
@@ -140,6 +142,17 @@ def save_to_file(buttons: List[PolygonButton],file_name: str="custom_grid.json")
     with open(file_name,"w") as f:
         f.write(json_output)
     print("Saved to file "+file_name)
+
+    output = ''
+    for button in buttons:
+        output += f'{round(button.center[0],3)},{round(button.center[1],3)}:\n'
+        output += '\tbase:'+'\n'
+        output += f'\t\tset_label("{button.action.get_action_name()}")\n'
+        output += '\t\t-\n'
+        output += f'\t\t{button.action.get_comand_name()}\n'
+    with open('keyboard.board','w') as f:
+        f.write(output)
+
 
 def load_from_file(root,canvas,file_name: str="custom_grid.json"):
 

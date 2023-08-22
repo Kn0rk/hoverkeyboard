@@ -28,7 +28,7 @@ class Action:
 
         p = Popen(['/home/knork/.talon/bin/repl'], stdout=PIPE, stdin=PIPE, stderr=PIPE)
         stdout_data = p.communicate(input=self.talon_comand.encode())[0]
-    
+        print(stdout_data)
 
         return
     #suenofgacuskijdqvyphebrhello how are you  s   
