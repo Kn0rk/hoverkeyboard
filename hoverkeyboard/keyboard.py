@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Set
 from hoverkeyboard.action import Action
 from hoverkeyboard.button import PolygonButton
 
@@ -6,13 +6,33 @@ from layer import Layer
 
 
 class Keyboard:
-    def __init__(self, layers: List[Layer]):
-        self.layer = {}
+    def __init__(self, layers: List[Layer],number_of_keys: int,
+                    pre_action: Action = None,
+                    post_action: Action = None,
+                    action: Action = None,
+                    activation_time: int = 500,
+                    name: str = "Keyboard"
 
+                 ):
+        self.layers = layers
+        self.active_layer = 0
+        self.name = name
+        self.number_of_keys = number_of_keys
+
+        self.pre_action:Action  = pre_action
+        self.post_action:Action = post_action
+        self.action:Action      = action
+
+        self.activation_time = activation_time
+
+    
     def set_layer(self, layer_name: str):
-        layer=self.layer[layer_name] 
+        layer=self.layers[layer_name] 
         layer.activate()
-
+    def get_key_from_lower_layer(self,from_layer,key):
+        for layer in reversed(self.layers[:from_layer]):
+            if layer.key_actions[key]:
+                return layer.key_actions[key]
 def load_board_file(root, canvas,file):
     with open(file,"r") as f:
         data = f.read()
