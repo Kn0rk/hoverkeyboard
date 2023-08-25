@@ -147,7 +147,7 @@ def save_to_file(buttons: List[PolygonButton], file_name: str = "custom_grid2.js
         f.write(output)
 
 
-def load_from_file(root, canvas, file_name: str = "custom_grid.json"):
+def load_from_file(root, canvas, file_name: str = "custom_grid2.json"):
 
     with open(file_name, "r") as f:
         data = json.load(f)

@@ -92,16 +92,16 @@
             0.81,
             0.15
         ],
-        "label": "xx",
-        "talon_command": "print('hoverkeyboard: No comand given')"
+        "label": "-",
+        "talon_command": "actions.key('-')"
     },
     {
         "center": [
             0.95,
             0.15
         ],
-        "label": "xx",
-        "talon_command": "print('hoverkeyboard: No comand given')"
+        "label": "+",
+        "talon_command": "actions.key('+')"
     },
     {
         "center": [
@@ -196,8 +196,8 @@
             0.88,
             0.3
         ],
-        "label": "xx",
-        "talon_command": "print('hoverkeyboard: No comand given')"
+        "label": "/",
+        "talon_command": "actions.key('/')"
     },
     {
         "center": [
@@ -300,8 +300,8 @@
             0.95,
             0.45
         ],
-        "label": "xx",
-        "talon_command": "print('hoverkeyboard: No comand given')"
+        "label": "=",
+        "talon_command": "actions.key('=')"
     },
     {
         "center": [
@@ -396,8 +396,8 @@
             0.88,
             0.6
         ],
-        "label": "xx",
-        "talon_command": "print('hoverkeyboard: No comand given')"
+        "label": "(",
+        "talon_command": "actions.key('(')"
     },
     {
         "center": [
@@ -492,8 +492,8 @@
             0.81,
             0.75
         ],
-        "label": "xx",
-        "talon_command": "print('hoverkeyboard: No comand given')"
+        "label": "[",
+        "talon_command": "actions.key('[')"
     },
     {
         "center": [
@@ -596,8 +596,8 @@
             0.88,
             0.9
         ],
-        "label": "xx",
-        "talon_command": "print('hoverkeyboard: No comand given')"
+        "label": "{",
+        "talon_command": "actions.key('{')"
     },
     {
         "center": [

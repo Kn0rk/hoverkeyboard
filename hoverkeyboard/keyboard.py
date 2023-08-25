@@ -23,16 +23,39 @@ class Keyboard:
         self.post_action:Action = post_action
         self.action:Action      = action
 
+        
         self.activation_time = activation_time
 
     
     def set_layer(self, layer_name: str):
         layer=self.layers[layer_name] 
         layer.activate()
-    def get_key_from_lower_layer(self,from_layer,key):
-        for layer in reversed(self.layers[:from_layer]):
-            if layer.key_actions[key]:
-                return layer.key_actions[key]
+    
+    def get_key_actions(self,key):
+        pre,action,post = self.layers[self.active_layer].get_actions(key)
+        layer_index = self.active_layer-1
+        while layer_index >= 0:
+            if pre and action and post:
+                break
+            lower_pre,lower_action,lower_post = self.layers[layer_index].get_actions(key)
+            if pre == None:
+                pre = lower_pre
+            if action == None:
+                action = lower_action
+            if post == None:
+                post = lower_post
+
+        if pre == None:
+            pre = self.pre_action
+        if action==None:
+            action = self.action
+        if post == None:
+            post = self.post_action
+        return pre,action,post
+
+    
+
+
 def load_board_file(root, canvas,file):
     with open(file,"r") as f:
         data = f.read()
