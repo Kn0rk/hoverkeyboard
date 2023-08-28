@@ -22,7 +22,7 @@ class PolygonButton:
         self.polygon = None
         self.polygon_points = None
         self.screen_center = []
-
+        #jself.
         self.hover_start = None
 
     def set_laybel(self, laybel):

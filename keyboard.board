@@ -5,9 +5,9 @@
 		mimic("bring Alfa")
 0.19,0.15:
 	base:
-		set_label("xx")
+		set_label("pageup")
 		-
-		print('hoverkeyboard: No comand given')
+		actions.key('pageup')
 0.28,0.15:
 	base:
 		set_label("xx")
@@ -165,14 +165,14 @@
 		actions.key('space')
 0.6,0.45:
 	base:
-		set_label("delete")
-		-
-		actions.key('delete')
-0.66,0.45:
-	base:
 		set_label("backspace")
 		-
 		actions.key('backspace')
+0.66,0.45:
+	base:
+		set_label("ctrl-backspace")
+		-
+		actions.key('ctrl-backspace')
 0.72,0.45:
 	base:
 		set_label("9")
@@ -255,9 +255,9 @@
 		print('hoverkeyboard: No comand given')
 0.19,0.75:
 	base:
-		set_label("xx")
+		set_label("pagedown")
 		-
-		print('hoverkeyboard: No comand given')
+		actions.key('pagedown')
 0.28,0.75:
 	base:
 		set_label("xx")
@@ -360,14 +360,14 @@
 		actions.key('#')
 0.69,0.9:
 	base:
-		set_label("xx")
+		set_label(""")
 		-
-		print('hoverkeyboard: No comand given')
+		actions.key('"')
 0.765,0.9:
 	base:
-		set_label("xx")
+		set_label(":")
 		-
-		print('hoverkeyboard: No comand given')
+		actions.key(':')
 0.88,0.9:
 	base:
 		set_label("{")

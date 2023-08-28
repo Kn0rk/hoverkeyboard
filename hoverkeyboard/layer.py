@@ -1,11 +1,12 @@
-from typing import List
+from typing import List, NewType
 from hoverkeyboard.action import Action
 
 from hoverkeyboard.button import PolygonButton
 
-
+LayerName=NewType('LayerName',str)
+LayerIndex=NewType('LayerIndex',int)
 class Layer: 
-    def __init__(self, name: str,index:int,keyboard,
+    def __init__(self, name:LayerName,index:int,keyboard,
                  pre_action: str = None,
                     post_action: str = None,
                     action: str = None,
@@ -14,7 +15,7 @@ class Layer:
                     key_pre_actions: List[Action] = None,
 key_post_actions: List[Action] = None,
                  ):
-        self.name = name
+        self.name:LayerName = name
         self.index = index
         self.keyboard = keyboard
         self.pre_action:Action  = pre_action
@@ -38,6 +39,18 @@ key_post_actions: List[Action] = None,
 
         self.activation_time = activation_time
     
+    def set_key_action(self, key:int,action: Action):
+        assert key < len(self.key_actions)
+        self.key_actions[key] = action
+
+    def set_key_pre_action(self, key:int,action: Action):
+        assert key < len(self.key_pre_actions)
+        self.key_pre_actions[key] = action
+
+    def set_key_post_action(self, key:int,action: Action):
+        assert key < len(self.key_post_actions)
+        self.key_post_actions[key] = action
+
     def get_actions(self,key):
         pre = self.key_pre_actions[key]
         action = self.key_actions[key]

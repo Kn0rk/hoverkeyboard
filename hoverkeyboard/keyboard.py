@@ -2,11 +2,11 @@ from typing import List, Set
 from hoverkeyboard.action import Action
 from hoverkeyboard.button import PolygonButton
 
-from layer import Layer
+from hoverkeyboard.layer import Layer, LayerName
 
 
 class Keyboard:
-    def __init__(self, layers: List[Layer],number_of_keys: int,
+    def __init__(self, centers:List[float] ,layer_names:List[LayerName],
                     pre_action: Action = None,
                     post_action: Action = None,
                     action: Action = None,
@@ -14,10 +14,12 @@ class Keyboard:
                     name: str = "Keyboard"
 
                  ):
-        self.layers = layers
         self.active_layer = 0
         self.name = name
-        self.number_of_keys = number_of_keys
+        self.number_of_keys = len(centers)
+        self.layer_names=layer_names
+        self.layers:List[Layer] = [Layer(layer_name,i,self) for i,layer_name in enumerate(layer_names)]
+
 
         self.pre_action:Action  = pre_action
         self.post_action:Action = post_action
@@ -26,8 +28,16 @@ class Keyboard:
         
         self.activation_time = activation_time
 
+    def set_key_action(self, layer_name:str,action: Action,pre_action:Action=None,post_action:Action=None):
+        assert layer_name in self.layer_names
+        self.layers[self.layer_names.index(layer_name)].set_key_action(action)
+        if pre_action:
+            self.layers[self.layer_names.index(layer_name)].set_key_pre_action(pre_action)
+        if post_action:
+            self.layers[self.layer_names.index(layer_name)].set_key_post_action(post_action)
+
     
-    def set_layer(self, layer_name: str):
+    def set_active_layer(self, layer_name: str):
         layer=self.layers[layer_name] 
         layer.activate()
     
