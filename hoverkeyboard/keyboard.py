@@ -1,12 +1,12 @@
 from typing import List, Set
-from hoverkeyboard.action import Action
+from hoverkeyboard.action import Action, ActionField
 from hoverkeyboard.button import PolygonButton
 
 from hoverkeyboard.layer import Layer, LayerName
 
 
 class Keyboard:
-    def __init__(self, centers:List[float] ,layer_names:List[LayerName],
+    def __init__(self, number_of_keys:int ,layer_names:List[LayerName],
                     pre_action: Action = None,
                     post_action: Action = None,
                     action: Action = None,
@@ -14,12 +14,12 @@ class Keyboard:
                     name: str = "Keyboard"
 
                  ):
-        self.active_layer = 0
+        self.active_layer = layer_names[0]
         self.name = name
-        self.number_of_keys = len(centers)
+        self.number_of_keys = number_of_keys
         self.layer_names=layer_names
-        self.layers:List[Layer] = [Layer(layer_name,i,self) for i,layer_name in enumerate(layer_names)]
-
+        self.layers:Set[Layer] = {layer_name:Layer(layer_name,i,self) for i,layer_name in enumerate(layer_names)}
+        
 
         self.pre_action:Action  = pre_action
         self.post_action:Action = post_action
@@ -28,19 +28,27 @@ class Keyboard:
         
         self.activation_time = activation_time
 
-    def set_key_action(self, layer_name:str,action: Action,pre_action:Action=None,post_action:Action=None):
+    def set_key_action(self, layer_name:str,key_index:int,action: Action):
         assert layer_name in self.layer_names
-        self.layers[self.layer_names.index(layer_name)].set_key_action(action)
-        if pre_action:
-            self.layers[self.layer_names.index(layer_name)].set_key_pre_action(pre_action)
-        if post_action:
-            self.layers[self.layer_names.index(layer_name)].set_key_post_action(post_action)
+        self.layers[layer_name].set_key_action(key_index,action)
 
-    
+
+    def key_pressed(self, key_index:int):
+        print("key press "+str(key_index))
+
     def set_active_layer(self, layer_name: str):
         layer=self.layers[layer_name] 
         layer.activate()
     
+    def get_key_action(self,key_index:int):
+        return self.layers[self.active_layer].get_action(key_index)
+
+    def derive_action_field(self,key_index:int,field_name:ActionField):
+        active_layer_actions = self.layers[self.active_layer].get_action(key_index)
+        if active_layer_actions and active_layer_actions.get_field(field_name):
+            return active_layer_actions.get_field(field_name)
+        
+
     def get_key_actions(self,key):
         pre,action,post = self.layers[self.active_layer].get_actions(key)
         layer_index = self.active_layer-1

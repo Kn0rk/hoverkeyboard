@@ -3,6 +3,8 @@ import numpy as np
 
 from hoverkeyboard.action import Action
 from hoverkeyboard.button import PolygonButton, save_to_file
+from hoverkeyboard.keyboard import Keyboard
+from hoverkeyboard.saver import save_keyboard
 
 def simple_staggered_grid():
     points = []
@@ -50,8 +52,16 @@ def custom_grid():
 
     return points
 
+
+def save_points(centers,path):
+    keyboard=Keyboard(centers,["base"])
+    save_keyboard(keyboard,centers,path)
+
 if __name__ == "__main__":
     points = custom_grid()
+    centers = [[points[index],points[index+1]] for index in range(0,len(points),2)]
+    save_points(centers,"custom_grid.board")
+    exit()
     action = Action("xx")
     buttons = []
     for index in range(0,len(points),2):

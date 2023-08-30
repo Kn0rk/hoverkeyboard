@@ -1,7 +1,5 @@
 from typing import List, NewType
-from hoverkeyboard.action import Action
-
-from hoverkeyboard.button import PolygonButton
+from hoverkeyboard.action import Action, ActionField
 
 LayerName=NewType('LayerName',str)
 LayerIndex=NewType('LayerIndex',int)
@@ -13,14 +11,16 @@ class Layer:
                     activation_time: int = None,
                     key_actions: List[Action] = None,
                     key_pre_actions: List[Action] = None,
-key_post_actions: List[Action] = None,
+                    key_post_actions: List[Action] = None,
+                    inherit_from:LayerIndex=None
                  ):
         self.name:LayerName = name
         self.index = index
         self.keyboard = keyboard
-        self.pre_action:Action  = pre_action
+        self.default_pre_action:Action  = pre_action
         self.post_action:Action = post_action
         self.action:Action      = action
+        self.inherit_from:LayerIndex = inherit_from
         if key_actions is None:
             key_actions = [None for i in range(0,keyboard.number_of_keys)]
         assert len(key_actions) == keyboard.number_of_keys
@@ -43,24 +43,21 @@ key_post_actions: List[Action] = None,
         assert key < len(self.key_actions)
         self.key_actions[key] = action
 
-    def set_key_pre_action(self, key:int,action: Action):
-        assert key < len(self.key_pre_actions)
-        self.key_pre_actions[key] = action
+    def get_field(self,field:ActionField):
+        if field == ActionField.LABEL:
+            return self.name
+        elif field == ActionField.PRE_ACTION:
+            return self.default_pre_action
+        elif field == ActionField.ACTION:
+            return self.action
+        elif field == ActionField.POST_ACTION:
+            return self.post_action
+        else:
+            raise ValueError("Unknown field: " + str(field))
 
-    def set_key_post_action(self, key:int,action: Action):
-        assert key < len(self.key_post_actions)
-        self.key_post_actions[key] = action
 
-    def get_actions(self,key):
-        pre = self.key_pre_actions[key]
-        action = self.key_actions[key]
-        post = self.key_post_actions[key]
-        if pre == None:
-            pre = self.pre_action
-        if action  ==  None:
-            action = self.action
-        if post == None:
-            post = self.post_action
-        return pre,action,post 
+
+    def get_action(self,key)->Action:
+        return self.key_actions[key]
 
         

@@ -7,14 +7,21 @@ import numpy as np
 from hoverkeyboard.action import Action
 from scipy.spatial import Delaunay, Voronoi, voronoi_plot_2d
 
+def buttons_from_centers(centers: List[float],keyboard,canvas):
+    buttons = []
+    for key_index,center in enumerate(centers):
+        buttons.append(PolygonButton(keyboard,canvas,center,key_index))
+    return buttons
 
 class PolygonButton:
 
-    def __init__(self, canvas, center: List[float], action: Action):
-        assert len(center) == 2
+    def __init__(self, keyboard, canvas,center: List[float],key_index:int):
+        assert len(center) == 2 
         self.canvas = canvas
         self.relative_center: List[float] = center
-        self.action: Action = action
+        self.key_index = key_index
+        self.keyboard = keyboard
+        
 
         # These can only be initialized once all buttons are defined
         # and they need to be recalculated every time the size of the window changes
@@ -34,8 +41,13 @@ class PolygonButton:
         if self.polygon is not None:
             self.canvas.delete(self.polygon)
             self.canvas.delete(self.text)
+        label=self.keyboard.get_key_action(self.key_index)
+        if label == None:
+            label = "unlabeled"
+        else:
+            label = label.get_action_name()    
         self.text = self.canvas.create_text(
-            self.screen_center[0], self.screen_center[1], text=self.action.text, font=("Arial", 17))
+            self.screen_center[0], self.screen_center[1], text=label, font=("Arial", 17))
         self.polygon = self.canvas.create_polygon(
             self.polygon_points, fill="", outline="black", width=2)
         self.canvas.tag_bind(self.polygon, "<Enter>", self.hover)
@@ -81,7 +93,8 @@ class PolygonButton:
                 'clock', 'milliseconds') - self.hover_start
 
             if self.hover_start + 700 < self.canvas.tk.call('clock', 'milliseconds'):
-                self.action.perform_action()
+                #self.action.perform_action()
+                self.keyboard.key_pressed(self.key_index)
                 self.canvas.itemconfigure(
                     self.polygon, fill="red", outline="black", width=1)
                 self.hover_start = None
@@ -99,6 +112,18 @@ def recalculate_polygon(root, buttons: List[PolygonButton]):
     for button in buttons:
         points.append(button.relative_center[0])
         points.append(button.relative_center[1])
+
+
+    count_surrounding_points = 0
+    for x,y in zip(points[::2],points[1::2]):
+        if x+y > 3:
+            count_surrounding_points += 1
+
+    if count_surrounding_points == 0:
+        # add surrounding points
+        points.extend([-5, -5, -5, 5, 5, -5, 5, 5])
+
+
     width = root.winfo_width()
     height = root.winfo_height()
     points[::2] = [x * width for x in points[::2]]
